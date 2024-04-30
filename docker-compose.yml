@@ -1,0 +1,67 @@
+#  ================================ NETWORK BRIDGE =================================
+# version: "3"
+
+# services:
+#   mysql:
+#     image: mysql:5.7
+#     container_name: mysql
+#     environment:
+#       - MYSQL_ROOT_PASSWORD=root
+#       - MYSQL_PASSWORD=root
+#       - MYSQL_DATABASE=job
+#     ports:
+#       - "3306:3306"
+#     volumes:
+#       - .:/src/mysql
+#     networks:
+#       - my_network
+
+#   postgres:
+#     image: postgres:latest
+#     container_name: postgres
+#     restart: always
+#     ports:
+#       - "5432:5432"
+#     environment:
+#       POSTGRES_USER: root
+#       POSTGRES_PASSWORD: root
+#       POSTGRES_DB: job
+#     networks:
+#       - my_network
+
+# networks:
+#   my_network:
+#     driver: bridge
+# version: "3"
+#  ================================ NETWORK HOST =================================
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=job
+    ports:
+      - "3306:3306"
+    volumes:
+      - .:/src/mysql
+    networks:
+      - my_network
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: job
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: host
