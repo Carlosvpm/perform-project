@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=job
+    ports:
+      - '3366:3306'
+    volumes:
+      - .:/src/mysql
+    networks:
+      db-network:
+        ipv4_address: 10.5.0.2
+  
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: job
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      db-network:
+        ipv4_address: 10.5.0.3
+
+volumes:
+  pgdata:
+
+networks:
+  db-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1

@@ -1,0 +1,23 @@
+{
+  "name": "perform-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cli-progress": "^3.12.0",
+    "faker": "^6.6.6",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.7",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
+  }
+}
